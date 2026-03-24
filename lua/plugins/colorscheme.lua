@@ -1,5 +1,4 @@
 return {
-  -- material.vimのdeep ocean
   'marko-cerovac/material.nvim',
   lazy = false,
   priority = 1000,

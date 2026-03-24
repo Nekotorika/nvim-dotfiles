@@ -15,7 +15,7 @@ return {
     config = function()
       require("lualine").setup({
         options = {
-          theme = "github_dark_default",
+          theme = "material",
           icons_enabled = true,
         },
         sections = {
