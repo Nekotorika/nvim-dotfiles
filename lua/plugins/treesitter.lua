@@ -12,9 +12,29 @@ return {
 
     treesitter.setup({
       ensure_installed = {
-        "lua", "python", "vim", "vimdoc", "bash", "sql", "json", "yaml", "toml",
-        "c", "cpp", "python", "rust", "go", "javascript", "typescript", "tsx",
-        "html", "css", "xml", "tex", "markdown", "markdown_inline",
+        "lua",
+        "python",
+        "vim",
+        "vimdoc",
+        "bash",
+        "sql",
+        "json",
+        "yaml",
+        "toml",
+        "c",
+        "cpp",
+        "python",
+        "rust",
+        "go",
+        "javascript",
+        "typescript",
+        "tsx",
+        "html",
+        "css",
+        "xml",
+        "tex",
+        "markdown",
+        "markdown_inline",
       },
 
       highlight = {
@@ -24,15 +44,6 @@ return {
       indent = {
         enable = true,
       },
-
-      --incremental_selection = {
-      --    enable = true,
-      --    keymaps = {
-      --        init_selection = "<Enter>",
-      --        node_incremental = "<Enter>",
-      --        node_decremental = "<BS>",
-      --    }
-      --}
     })
   end,
 }

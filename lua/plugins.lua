@@ -18,11 +18,12 @@ require("lazy").setup({
     { import = "plugins.completion" },
     { import = "plugins.filetree" },
     { import = "plugins.treesitter" },
+    { import = "plugins.conform" },
     { import = "plugins.lsp" },
     { import = "plugins.snippets" },
     { import = "plugins.ui" },
-    { import = "plugins.telescope"},
-    { import = "plugins.alpha"},
+    { import = "plugins.telescope" },
+    { import = "plugins.alpha" },
   },
 
   defaults = { lazy = false, version = false },
@@ -44,8 +45,8 @@ require("lazy").setup({
   },
 
   rocks = {
-      enabled = false,
-  }
+    enabled = false,
+  },
 })
 
 require("core.options")

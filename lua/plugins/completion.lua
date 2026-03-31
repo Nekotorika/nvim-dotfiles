@@ -24,12 +24,13 @@ return {
           ["<C-p>"] = cmp.mapping.select_prev_item(),
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.abort(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
+          ["<CR>"] = cmp.mapping.confirm({ select = false }),
+          ["<Tab>"] = cmp.mapping.confirm({ select = true }),
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp", keyword_length = 1 },
-          { name = "luasnip",  keyword_length = 2 },
-          { name = "buffer",   keyword_length = 3 },
+          { name = "luasnip", keyword_length = 2 },
+          { name = "buffer", keyword_length = 3 },
           { name = "path" },
         }),
       })
