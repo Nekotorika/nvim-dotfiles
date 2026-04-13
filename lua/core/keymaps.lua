@@ -25,4 +25,3 @@ npairs.setup({
     java = false,
   },
 })
-

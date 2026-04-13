@@ -23,6 +23,7 @@ return {
         "c",
         "cpp",
         "c_sharp",
+        "fortran",
         "python",
         "rust",
         "go",
