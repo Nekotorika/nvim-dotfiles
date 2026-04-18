@@ -1,6 +1,7 @@
 return {
   {
     "Bekaboo/dropbar.nvim",
+    event = "VeryLazy",
     dependencies = {
       "nvim-telescope/telescope.nvim",
       "echasnovski/mini.icons",

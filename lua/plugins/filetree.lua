@@ -22,7 +22,7 @@ return {
         winbar = false,
         window = {
           position = "left",
-          width = 30,
+          width = 35,
           mappings = {},
         },
 
