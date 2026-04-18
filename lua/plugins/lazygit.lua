@@ -1,6 +1,6 @@
 return {
   "kdheepak/lazygit.nvim",
-  cmd = "LazyGit",
+  event = "VeryLazy",
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
@@ -26,22 +26,26 @@ return {
       end
     end, { desc = "LazyGit Toggle" })
 
+    
+
     vim.api.nvim_create_autocmd("FileType", {
       pattern = "lazygit",
       callback = function()
         local opts = { buffer = 0 }
-
+    
         vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
-        vim.keymap.set("t", "<leader>gg", "<cmd>close<cr>", opts)
-      end,
-    })
-
-    vim.api.nvim_create_autocmd("BufWinLeave", {
-      pattern = "*lazygit*",
-      callback = function()
-        vim.schedule(function()
-          vim.cmd("normal! L")
-        end)
+    
+        vim.keymap.set("n", "q", function()
+          -- 一回normalに戻す
+          vim.cmd("stopinsert")
+    
+          -- そのあと閉じる
+          vim.schedule(function()
+            vim.cmd("close")
+          end)
+        end, opts)
+    
+        vim.keymap.set("n", "<leader>gg", "<cmd>close<cr>", opts)
       end,
     })
   end,
