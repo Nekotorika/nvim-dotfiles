@@ -53,7 +53,7 @@ return {
       require("mason-lspconfig").setup({
         ensure_installed = { "lua_ls", "clangd", "csharp_ls", "pyright", "rust_analyzer", "ts_ls", "bashls" },
         automatic_installation = true,
-        hanglers = {
+        handlers = {
           function(server_name)
             require("lspconfig")[server_name].setup({
               on_attach = on_attach,

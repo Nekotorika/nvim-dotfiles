@@ -33,28 +33,32 @@ autocmd("ColorScheme", {
 })
 
 vim.keymap.set("n", "<leader>a", function()
-  -- 現在のバッファが neo-tree かどうかを確認
-  if vim.bo.filetype == "neo-tree" then
-    vim.cmd("wincmd p") -- 前のウィンドウ（エディタ側）に戻る
+  local current_win = vim.api.nvim_get_current_win()
+  local current_buf = vim.api.nvim_win_get_buf(current_win)
+
+  -- 今 neo-tree にいる → エディタへ
+  if vim.bo[current_buf].filetype == "neo-tree" then
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+      local buf = vim.api.nvim_win_get_buf(win)
+      if vim.bo[buf].filetype ~= "neo-tree" then
+        vim.api.nvim_set_current_win(win)
+        return
+      end
+    end
   else
-    -- 全てのウィンドウをループして neo-tree を探す
-    local neotree_win = nil
+    -- エディタ側 → neo-tree 探す
     for _, win in ipairs(vim.api.nvim_list_wins()) do
       local buf = vim.api.nvim_win_get_buf(win)
       if vim.bo[buf].filetype == "neo-tree" then
-        neotree_win = win
-        break
+        vim.api.nvim_set_current_win(win)
+        return
       end
     end
 
-    if neotree_win then
-      vim.api.nvim_set_current_win(neotree_win)
-    else
-      -- もし neo-tree が開いていない場合に自動で開くなら以下を追記（任意）
-      vim.cmd("Neotree focus")
-    end
+    -- なければ何もしない（お好みで通知）
+    -- vim.notify("Neo-tree is not open", vim.log.levels.INFO)
   end
-end, { desc = "Switch focus between Neo-tree and editor" })
+end, { desc = "Switch focus Neo-tree <-> editor (no open)" })
 
 vim.keymap.set("n", "<C-t>", "<cmd>tabnew<CR>", { desc = "New tab" })
 vim.keymap.set("n", "<C-e>", "<cmd>bd!<CR>", { desc = "Close tab" })
