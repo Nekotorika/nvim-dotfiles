@@ -17,11 +17,14 @@ return {
       "echasnovski/mini.icons",
       "MunifTanjim/nui.nvim",
     },
+    opts = {
+      sources = { "filesystem", "buffers", "git_status" }, -- 必要に応じて
+    },
     config = function()
       require("neo-tree").setup({
         window = {
           position = "left",
-          width = 35,
+          width = 30,
           mappings = {},
         },
 

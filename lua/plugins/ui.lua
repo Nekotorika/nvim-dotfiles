@@ -12,8 +12,10 @@ return {
 
   {
     "nvim-lualine/lualine.nvim",
-    event = "BufReadPost",
-    dependencies = { "echasnovski/mini.icons" },
+    dependencies = {
+      "echasnovski/mini.icons",
+      "catppuccin/nvim",
+    },
     config = function()
       require("lualine").setup({
         options = {
@@ -23,7 +25,28 @@ return {
         sections = {
           lualine_a = { "mode" },
           lualine_b = { "branch" },
-          lualine_c = { "filename" },
+          lualine_c = {
+            {
+              "filename",
+              cond = function()
+                local ft = vim.bo.filetype
+                local special_filetypes = {
+                  "neo-tree", -- neo-tree filesystem
+                  "snacks_dashboard",
+                  "TelescopePrompt", -- telescope
+                  "lazygit",
+                  "lazy", -- lazy.nvim
+                  "mason",
+                  "trouble",
+                  "toggleterm",
+                }
+                return not vim.tbl_contains(special_filetypes, ft)
+              end,
+              path = 0, -- 0 = filename only（1にすると相対パスも出る）
+              shorting_target = 40,
+              symbols = { modified = " ●", readonly = " " },
+            },
+          },
           lualine_x = { "encoding", "fileformat", "filetype" },
           lualine_y = { "progress" },
           lualine_z = { "location" },
