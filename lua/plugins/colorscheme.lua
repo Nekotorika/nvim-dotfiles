@@ -28,7 +28,6 @@ return {
         telescope = true,
         treesitter = true,
         cmp = true,
-        navic = true,
         which_key = true,
       },
 

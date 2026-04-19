@@ -17,7 +17,7 @@ return {
     config = function()
       require("lualine").setup({
         options = {
-          theme = "material",
+          theme = "catppuccin",
           icons_enabled = true,
         },
         sections = {
@@ -42,8 +42,7 @@ return {
           offsets = {
             {
               filetype = "neo-tree",
-              text = "Directories",
-              highlight = "Directory",
+              text = "EXPLORER",
               separator = true,
             },
           },

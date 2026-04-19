@@ -26,35 +26,24 @@ return {
       end
     end, { desc = "LazyGit Toggle" })
 
-    
-
     vim.api.nvim_create_autocmd("FileType", {
       pattern = "lazygit",
       callback = function()
         local opts = { buffer = 0 }
-        
         vim.keymap.set("t", "<esc>", function()
-          vim.api.nvim_feedkeys(
-            vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true),
-            "n",
-            false
-          )
-        
+          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), "n", false)
           vim.schedule(function()
             if vim.bo.filetype == "lazygit" then
               vim.cmd("normal! gg0")
             end
           end)
         end, { buffer = 0 })
-    
         vim.keymap.set("n", "q", function()
           vim.cmd("stopinsert")
-    
           vim.schedule(function()
             vim.cmd("close")
           end)
         end, opts)
-    
         vim.keymap.set("n", "<leader>gg", "<cmd>close<cr>", opts)
       end,
     })

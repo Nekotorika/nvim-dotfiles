@@ -26,7 +26,7 @@ return {
         },
 
         source_selector = {
-          winbar = false,
+          winbar = false, -- タイトルバーの "neo-tree filesystem [1]" を非表示
           statusline = false,
         },
 
@@ -36,6 +36,7 @@ return {
             hide_dotfiles = true,
             hide_gitignored = false,
           },
+
           follow_current_file = {
             enabled = true,
           },
