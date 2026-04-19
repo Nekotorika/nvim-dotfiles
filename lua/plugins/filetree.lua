@@ -25,11 +25,6 @@ return {
           mappings = {},
         },
 
-        source_selector = {
-          winbar = false, -- タイトルバーの "neo-tree filesystem [1]" を非表示
-          statusline = false,
-        },
-
         filesystem = {
           filtered_items = {
             visible = true,
