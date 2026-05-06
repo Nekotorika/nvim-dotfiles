@@ -37,6 +37,7 @@ return {
         "tex",
         "markdown",
         "markdown_inline",
+        "asm",
       },
 
       highlight = {

@@ -6,7 +6,6 @@ return {
       require("mason").setup()
     end,
   },
-
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
@@ -52,7 +51,19 @@ return {
       end
 
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "clangd", "csharp_ls", "pyright", "rust_analyzer", "ts_ls", "bashls" },
+        ensure_installed = {
+          "lua_ls",
+          "clangd",
+          "csharp_ls",
+          "pyright",
+          "rust_analyzer",
+          "ts_ls",
+          "html",
+          "cssls",
+          "emmet_language_server",
+          "bashls",
+          "asm_lsp",
+        },
         automatic_installation = true,
         handlers = {
           function(server_name)
