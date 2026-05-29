@@ -10,6 +10,16 @@ return {
       return
     end
 
+    local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+    parser_config.mojo = {
+      install_info = {
+        url = "https://github.com/archneovim/tree-sitter-mojo",
+        files = { "src/parser.c" },
+        branch = "main",
+      },
+      filetype = "mojo",
+    }
+
     configs.setup({
       ensure_installed = {
         "lua",
